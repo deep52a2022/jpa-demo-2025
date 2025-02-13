@@ -1,0 +1,29 @@
+services:
+  jpa-basic-app:
+    image: 'jpa-demo-2025/basic:1.0-SNAPSHOT'
+    ports:
+      - "8081:8081"
+    environment:
+      DB_HOST: mysql_db
+    depends_on:
+      - mysql_db
+
+  mysql_db:
+    image: mysql:8.4.4
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: jpa_demo
+      MYSQL_USER: jpa_demo_user
+      MYSQL_PASSWORD: jpa_demo_pass1
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_db_data:/var/lib/mysql
+      - ./mysql-config:/etc/mysql/conf.d
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+volumes:
+  mysql_db_data:
