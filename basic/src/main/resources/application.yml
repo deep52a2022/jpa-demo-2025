@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:3306/jpa_demo
-    username: jpa_demo_user
-    password: jpa_demo_pass1
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/${MYSQL_DATABASE:jpa_demo}
+    username: ${MYSQL_USER:jpa_demo_user}
+    password: ${MYSQL_PASSWORD:jpa_demo_pass1}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:

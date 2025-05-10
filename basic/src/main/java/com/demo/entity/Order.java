@@ -1,7 +1,7 @@
 package com.demo.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+//import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,4 +22,11 @@ public class Order {
     private User user;
 
 }
+
+/***
+ * order
+ * id (PK)
+ * ...
+ * user_id (FK → user.id)
+ */
 
